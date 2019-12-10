@@ -1,0 +1,8 @@
+server:
+  port: 80
+spring:
+  kafka:
+    bootstrap-servers: hdp-1:9092,hdp-2:9092,hdp-3:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer

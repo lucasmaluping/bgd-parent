@@ -2,6 +2,7 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bgd-2102" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bgd-chart" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bgd-common" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bgd-logger" charset="UTF-8" />

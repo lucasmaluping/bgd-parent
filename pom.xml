@@ -10,6 +10,7 @@
         <module>bgd-realtime</module>
         <module>bgd-logger</module>
         <module>bgd-release</module>
+        <module>bgd-2102</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
