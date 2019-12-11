@@ -34,7 +34,7 @@ public class LoggerController {
         logger.info(jsonObject.toJSONString());
         //System.out.println(jsonObject.toJSONString());
         // 发送kafka
-        kafkaTemplate.send("bigdata_635", jsonObject.toJSONString());
+//        kafkaTemplate.send("bigdata_635", jsonObject.toJSONString());
 
         return "success";
     }

@@ -33,12 +33,13 @@ object DauApp {
 
     //用封装好的kafkaUtil类来获取kafka的实例
     val inputDstream: InputDStream[ConsumerRecord[String, String]] = MyKafkaUtil.getKafkaStream(MoveConstant.KAFKA_TOPIC_STARTUP, ssc)
+//    inputDstream.count().print()
 
     //    inputDstream.foreachRDD{rdd=>
     //      println(rdd.map(_.value()).collect().mkString("\n"))
     //    }
 
-    // 转换处理 
+    // 转换处理
     val startuplogStream: DStream[Startuplog] = inputDstream.map { record =>
       //kafka中数据是<k,v>，我们只需要v
       val jsonStr: String = record.value()
@@ -93,37 +94,38 @@ object DauApp {
     }
 
 
+    distinctDstream.count().print()
 
-    // 保存到redis中
-    distinctDstream.foreachRDD { rdd =>
-      //driver
-      // redis  type set
-      // key  dau:2019-06-03    value : mids
-      rdd.foreachPartition { startuplogItr =>
-        //executor
-        val jedis: Jedis = MyRedisUtil.getJedisClient
-        val list: List[Startuplog] = startuplogItr.toList
-        for (startuplog <- list) {
-          val key = "dau:" + startuplog.logDate
-          val value = startuplog.mid
-          jedis.sadd(key, value)
-          //println(startuplog) //往es中保存
-        }
-        //将最终处理的数据保存到ES中
-        MyEsUtil.indexBulk(MoveConstant.ES_INDEX_DAU, list)
-        jedis.close()
-      }
-
-      //      rdd.foreach { startuplog =>   //executor
-      //        val jedis: Jedis = RedisUtil.getJedisClient
-      //        val key="dau:"+startuplog.logDate
-      //        val value=startuplog.mid
-      //        jedis.sadd(key,value)
-      //        jedis.close()
-      //      }
-
-
-    }
+//    // 保存到redis中
+//    distinctDstream.foreachRDD { rdd =>
+//      //driver
+//      // redis  type set
+//      // key  dau:2019-06-03    value : mids
+//      rdd.foreachPartition { startuplogItr =>
+//        //executor
+//        val jedis: Jedis = MyRedisUtil.getJedisClient
+//        val list: List[Startuplog] = startuplogItr.toList
+//        for (startuplog <- list) {
+//          val key = "dau:" + startuplog.logDate
+//          val value = startuplog.mid
+//          jedis.sadd(key, value)
+//          //println(startuplog) //往es中保存
+//        }
+//        //将最终处理的数据保存到ES中
+//        MyEsUtil.indexBulk(MoveConstant.ES_INDEX_DAU, list)
+//        jedis.close()
+//      }
+//
+//      //      rdd.foreach { startuplog =>   //executor
+//      //        val jedis: Jedis = RedisUtil.getJedisClient
+//      //        val key="dau:"+startuplog.logDate
+//      //        val value=startuplog.mid
+//      //        jedis.sadd(key,value)
+//      //        jedis.close()
+//      //      }
+//
+//
+//    }
 
 
     ssc.start()
