@@ -1,4 +1,4 @@
-package com.info.utils
+package com.zpark.sparksteam.utils
 
 import java.io.InputStreamReader
 import java.util.Properties
