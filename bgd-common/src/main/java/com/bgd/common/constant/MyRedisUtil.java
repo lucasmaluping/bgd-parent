@@ -1,4 +1,4 @@
-package com.bgt.realtime.utils;
+package com.bgd.common.constant;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -46,7 +46,6 @@ public class MyRedisUtil {
             }
         }
     }
-
 
     private static Properties readConfigFile() throws IOException {
         InputStream in = MyRedisUtil.class.getClass().getResourceAsStream("/" + proPath);

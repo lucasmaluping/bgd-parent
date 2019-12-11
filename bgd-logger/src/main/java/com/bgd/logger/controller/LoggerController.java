@@ -40,7 +40,7 @@ public class LoggerController {
         // 发送kafka
         if ("startup".equals(jsonObject.getString("type"))) {
             //将数据下沉到kafka。KAFKA_TOPIC_STARTUP=bigdata
-            kafkaTemplate.send(MoveConstant.KAFKA_TOPIC_STARTUP, jsonObject.toJSONString());
+            //kafkaTemplate.send(MoveConstant.KAFKA_TOPIC_STARTUP, jsonObject.toJSONString());
         }
         return "success";
     }

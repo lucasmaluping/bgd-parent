@@ -84,6 +84,7 @@ object DataDispose {
     }
     val groupByKeyDStream: DStream[(String, Iterable[String])] = value.groupByKey()
 
+    //beijing, [n1,n1,n3]
     val filterDstream: DStream[(String, Iterable[String])] = groupByKeyDStream.filter {
       data =>
         !data._2.equals(data._2)
