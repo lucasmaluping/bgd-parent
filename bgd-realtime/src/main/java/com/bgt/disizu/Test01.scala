@@ -1,7 +1,6 @@
 package com.bgt.disizu
 
 import org.apache.spark.sql.SparkSession
-
 /*
   第四组：郭义龙，刘富强，沈岩，吴仔健，张娜，李金超，尹佳欣，冯子鹏
     1、数据源格式： {"banji":"one","name":"xincongming","chengji":99}
@@ -16,13 +15,13 @@ object Test01 {
       .config("spark.some.config.option", "some-value")
       .getOrCreate()
     import spark.implicits._
-    val test=spark.read.json("hdfs://hadoop--4:9000/text.jsno")
+    val test=spark.read.json("hdfs://hadoop--4:9000/text.json")
     //查看里面的数据
     test.show()
     //注册成表结构。
     test.createOrReplaceTempView("test")
     //根据班级分组，求各班级总的平均分以及成绩TOP5
-    val sql=spark.sql("SELECT avg(chengji)as average FROM test group by banji")
+    val sql=spark.sql("SELECT avg(chengji)as average ,banji FROM test group by banji")
     sql.show()
   }
 }
