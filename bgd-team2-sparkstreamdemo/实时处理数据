@@ -1,0 +1,6 @@
+需求：
+北京地区实时统计上线人数及操作系统的比例（登陆过就算上线人数，同一id去重）
+数据源：
+{"area":"guangdong","uid":"260","os":"andriod","ch":"xiaomi","appid":"Hello-Vs","mid":"mid_252","type":"startup","vs":"1.2.2","ts":1575942046473}
+流程：
+数据源-flume-kafka-sparkstreaming-redis
