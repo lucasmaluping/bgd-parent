@@ -1,0 +1,36 @@
+求每个电影平均分
+数据格式
+movieId     tagID     relevance
+1	1	0.025
+1	2	0.025
+1	3	0.05775
+1	4	0.09675
+1	5	0.14675
+1	6	0.217
+1	7	0.067
+1	8	0.26275
+1	9	0.262
+1	10	0.032
+原始数据建表语句
+drop table if exists ods_genome_scores;
+CREATE EXTERNAL TABLE ods_genome_scores (`movield` string,`tagId` string,`relevance` string)
+PARTITIONED BY (`dt` string)
+row format delimited fields terminated by ','
+LOCATION '/user/hive/warehouse/project.db/ods_genome_scores';
+
+导入数据
+load data inpath '/data/genome-scores.txt' into table project.ods_genome_scores partition(dt='2019-12-12')
+
+电影评分表
+drop table if exists dws_movie_rating;
+CREATE EXTERNAL TABLE dws_movie_rating (`movield` string,`rating` string)
+PARTITIONED BY (`dt` string)
+LOCATION '/user/hive/warehouse/project.db/dws_movie_rating';
+
+导入数据
+insert overwrite table "project.dws_movie_rating
+partition (dt='2019-12-12')
+select movield,avg(relevance)
+from project.ods_genome_scores
+where dt='2019-12-12'
+group by movield;
