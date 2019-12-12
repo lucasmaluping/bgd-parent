@@ -6,10 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="bgd-chart" />
-        <module name="bgd-2102" />
-        <module name="dw-chart" />
         <module name="bgd-realtime" />
+        <module name="bgd-2102" />
+        <module name="bgd-chart" />
+        <module name="dw-chart" />
         <module name="bgd-release" />
         <module name="bgd-mock" />
         <module name="bgd-common" />
