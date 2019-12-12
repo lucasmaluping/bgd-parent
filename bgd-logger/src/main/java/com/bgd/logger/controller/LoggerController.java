@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Random;
+
 /***
  * @author :star
  * @time :2019.12.7
@@ -37,10 +39,16 @@ public class LoggerController {
         // 落盘到logfile   log4j
         logger.info(jsonObject.toJSONString());
         System.out.println(jsonObject.toJSONString());
+        String[] arr = {"aa","bb","cc","dd","ee","ff","gg"};
+        Random random = new Random();
+        int i = random.nextInt(arr.length);
         // 发送kafka
         if ("startup".equals(jsonObject.getString("type"))) {
             //将数据下沉到kafka。KAFKA_TOPIC_STARTUP=bigdata
-            //kafkaTemplate.send(MoveConstant.KAFKA_TOPIC_STARTUP, jsonObject.toJSONString());
+//            kafkaTemplate.send(MoveConstant.KAFKA_TOPIC_STARTUP, jsonObject.toJSONString());
+//            System.out.println(jsonObject);
+
+            kafkaTemplate.send(MoveConstant.KAFKA_TOPIC_Window, arr[i]);
         }
         return "success";
     }

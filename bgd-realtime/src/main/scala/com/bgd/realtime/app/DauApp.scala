@@ -39,6 +39,8 @@ object DauApp {
     //      println(rdd.map(_.value()).collect().mkString("\n"))
     //    }
 
+
+
     // 转换处理
     val startuplogStream: DStream[Startuplog] = inputDstream.map { record =>
       //kafka中数据是<k,v>，我们只需要v
