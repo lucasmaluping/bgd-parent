@@ -11,6 +11,10 @@
         <module>bgd-logger</module>
         <module>bgd-release</module>
         <module>bgd-start</module>
+        <module>bgd-dy</module>
+        <!--<module>bgd-2102</module>-->
+        <module>bgd-635</module>
+        <module>bgd-start</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
