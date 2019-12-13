@@ -6,21 +6,24 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="bgd-logger (1) (com.info)" />
-        <module name="bgd-chart" />
-        <module name="bgd-mock (1) (com.635.info)" />
         <module name="bgd-2102" />
-        <module name="dw-chart" />
-        <module name="bgd-realtime (1) (com.635.info)" />
-        <module name="bgd-release" />
-        <module name="bgd-mock" />
+        <module name="bgd-chart" />
         <module name="bgd-common" />
-        <module name="bgd-realtime" />
+        <module name="bgd-dy" />
         <module name="bgd-logger" />
+        <module name="bgd-mock" />
+        <module name="bgd-realtime" />
+        <module name="bgd-release" />
+        <module name="bgd-start" />
+        <module name="bgd-team2-sparkstreamdemo" />
+        <module name="dw-chart" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="bgd-635" target="1.8" />
+      <module name="bgd-logger (1) (com.info)" target="1.8" />
+      <module name="bgd-mock (1) (com.635.info)" target="1.8" />
+      <module name="bgd-realtime (1) (com.635.info)" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

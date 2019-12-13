@@ -10,6 +10,7 @@
         <module>bgd-realtime</module>
         <module>bgd-logger</module>
         <module>bgd-release</module>
+        <module>bgd-dy</module>
         <!--<module>bgd-2102</module>-->
         <module>bgd-635</module>
         <module>bgd-start</module>
