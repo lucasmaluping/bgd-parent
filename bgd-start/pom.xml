@@ -2,14 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>bgd-parent</artifactId>
-        <groupId>com.bgd</groupId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
+
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>com.bgd.info</groupId>
     <artifactId>bgd-start</artifactId>
+    <version>1.0-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
@@ -32,5 +30,12 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.56</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.janino</groupId>
+            <artifactId>commons-compiler</artifactId>
+            <version>2.7.8</version>
+        </dependency>
+
     </dependencies>
 </project>

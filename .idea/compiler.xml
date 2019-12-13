@@ -13,6 +13,7 @@
         <module name="bgd-release" />
         <module name="bgd-mock" />
         <module name="bgd-common" />
+        <module name="bgd-start" />
         <module name="bgd-logger" />
       </profile>
     </annotationProcessing>
