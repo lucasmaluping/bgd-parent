@@ -12,6 +12,7 @@
         <module>bgd-release</module>
         <!--<module>bgd-2102</module>-->
         <module>bgd-635</module>
+        <module>bgd-start</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
