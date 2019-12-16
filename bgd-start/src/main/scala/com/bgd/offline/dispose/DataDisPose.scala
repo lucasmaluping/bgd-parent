@@ -4,12 +4,11 @@ import java.util.Properties
 
 import com.alibaba.fastjson.JSON
 import com.bgd.offline.bean.Data
-import org.apache.spark.{SparkConf, SparkContext}
+import org.apache.spark.SparkConf
 import org.apache.spark.rdd.RDD
-import org.apache.spark.sql.{DataFrame, Dataset, Row, SparkSession}
+import org.apache.spark.sql.{DataFrame, SparkSession}
 
-import scala.collection.immutable.StringOps
-import scala.collection.mutable
+
 
 /**
   * @Author :star
@@ -19,9 +18,9 @@ import scala.collection.mutable
 object DataDisPose {
 
   def main(args: Array[String]): Unit = {
-    val sparkConf: SparkConf = new SparkConf().setAppName("DataDisPose").setMaster("local[1]")
+    val sparkConf: SparkConf = new SparkConf().setAppName("DataDisPose").setMaster("local[*]")
     val ss: SparkSession = SparkSession.builder().config(sparkConf).getOrCreate()
-
+    sinkMysqlIsArAndNa(ss)
   }
 
   private def selHiveData(): Unit = {
@@ -55,7 +54,7 @@ object DataDisPose {
     mapRDD.saveAsTextFile("hdfs://hdp-1:9000/spark/data.log")
   }
 
-  private def saveHDFS(ss: SparkSession) = {
+  private def saveHDFS(ss: SparkSession) =  {
     //TODO 3.将所有的数据通过代码的形式备份到hdfs上
     val data: RDD[String] = ss.sparkContext.textFile("dataInput/logger.json")
     data.saveAsTextFile("hdfs://hdp-1:9000/spark")
@@ -91,7 +90,7 @@ object DataDisPose {
   private def sinkMysqlIsArAndNa(ss: _root_.org.apache.spark.sql.SparkSession) = {
     // TODO 1.将address+name保存到mysql中
     //val df: DataFrame = ss.read.json("dataInput/logger.json")
-    val data: RDD[String] = ss.sparkContext.textFile("dataInput/logger.json")
+    val data: RDD[String] = ss.sparkContext.textFile("C:/zpark/bgd-parent/bgd-start/dataInput/logger.jsonn")
     val mapRDD: RDD[(String, String)] = data.map {
         row =>
           val jsonData: Data = JSON.parseObject(row, classOf[Data])
@@ -102,11 +101,11 @@ object DataDisPose {
 
     val prop = new Properties()
     prop.setProperty("user", "root")
-    prop.setProperty("password", "root")
+    prop.setProperty("password", "lucas")
     prop.setProperty("driver", "com.mysql.cj.jdbc.Driver")
     df.write.jdbc(
       "jdbc:mysql://localhost:3306/frame?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true",
-      "bigdata2",
+      "bigdata1",
       prop
     )
   }
