@@ -1,0 +1,5 @@
+application:使用sparksql处理数据，最终将数据保存到mysql数据库中
+dao：将处理好的数据保存到各自的类中，以便之后的处理
+    FirstCleanoutCountDemo：保存了，用户使用的手机版本
+    SecondCleanoutCountDemo：保存了，ios用户使用app的版本
+    ThirdCleanoutDemo：保存了Android用户使用app的版本

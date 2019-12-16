@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>ECharts</title>
+    <script src="ec/echarts.min.js"></script>
+    <script src="ec/jquery.min.js"></script>
+</head>
+<body>
+
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width: 600px;height:400px; float:left;"></div>
+<script>
+    $(document).ready(function(){
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+        //数据加载完之前先显示一段简单的loading动画
+        myChart.showLoading();
+        var names=[];    //横坐标数组（实际用来盛放X轴坐标值）
+        var values=[];    //纵坐标数组（实际用来盛放Y坐标值）
+        $.ajax({
+            type : "post",
+            async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+            url : "data.json",    //请求发送到dataActiont处
+            data : {},
+            dataType : "json",        //返回数据形式为json
+            success : function(result) {
+                //请求成功时执行该函数内容，result即为服务器返回的json对象
+                var len = result.length;
+                if (result) {
+
+                    for(var i in result){
+                        names.push(result[i].vs);
+                        values.push(result[i].num);
+                    }
+                    myChart.hideLoading();    //隐藏加载动画
+                    myChart.setOption({        //加载数据图表
+                        tooltip: {},
+                        legend: {
+                            data:['Android用户使用app个个版本数量']
+                        },
+                        xAxis: {
+                            data: names
+                        },
+                        yAxis: {
+                            type: 'value'
+                        },
+                        series: [{
+                            // 根据名字对应到相应的系列
+                            name: 'Android用户使用app个个版本数量',//薪资 series not exists. Legend data should be same with series name or data name.
+                            type: 'bar',
+                            data: values
+                        }]
+                    });
+                }
+            },
+            error : function(errorMsg) {
+                //请求失败时执行该函数
+                alert("图表请求数据失败!");
+                myChart.hideLoading();
+            }
+        });//end ajax
+    });
+    // 使用刚指定的配置项和数据显示图表。
+    // myChart.setOption(option);
+</script>
+<div id="main1" style="width : 600px;height:400px; float:right;margin-left:10px;" ></div>
+<script>
+    $(document).ready(function(){
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main1'));
+        //数据加载完之前先显示一段简单的loading动画
+        myChart.showLoading();
+        var names=[];    //横坐标数组（实际用来盛放X轴坐标值）
+        var values=[];    //纵坐标数组（实际用来盛放Y坐标值）
+        $.ajax({
+            type : "post",
+            async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+            url : "ios.json",    //请求发送到dataActiont处
+            data : {},
+            dataType : "json",        //返回数据形式为json
+            success : function(result) {
+                //请求成功时执行该函数内容，result即为服务器返回的json对象
+                var len = result.length;
+                if (result) {
+
+                    for(var i in result){
+                        names.push(result[i].vs);
+                        values.push(result[i].num);
+                    }
+                    myChart.hideLoading();    //隐藏加载动画
+                    myChart.setOption({        //加载数据图表
+                        tooltip: {},
+                        legend: {
+                            data:['IOS用户使用app个个版本数量']
+                        },
+                        xAxis: {
+                            data: names
+                        },
+                        yAxis: {
+                            type: 'value'
+                        },
+                        series: [{
+                            // 根据名字对应到相应的系列
+                            name: 'IOS用户使用app个个版本数量',//薪资 series not exists. Legend data should be same with series name or data name.
+                            type: 'bar',
+                            data: values
+                        }]
+                    });
+                }
+            },
+            error : function(errorMsg) {
+                //请求失败时执行该函数
+                alert("图表请求数据失败!");
+                myChart.hideLoading();
+            }
+        });//end ajax
+    });
+    // 使用刚指定的配置项和数据显示图表。
+    // myChart.setOption(option);
+</script>
+<div id="main2" style="width: 600px;height:400px; float:left;"></div>
+<script>
+
+    $(document).ready(function(){
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main2'));
+        //数据加载完之前先显示一段简单的loading动画
+        myChart.showLoading();
+        var names=[];    //横坐标数组（实际用来盛放X轴坐标值）
+        var values=[];    //纵坐标数组（实际用来盛放Y坐标值）
+        $.ajax({
+            type : "post",
+            async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+            url : "os.json",    //请求发送到dataActiont处
+            data : {},
+            dataType : "json",        //返回数据形式为json
+            success : function(result) {
+                //请求成功时执行该函数内容，result即为服务器返回的json对象
+                var len = result.length;
+                if (result) {
+
+                    for(var i in result){
+                        names.push(result[i].os);
+                        values.push(result[i].num);
+                    }
+                    myChart.hideLoading();    //隐藏加载动画
+                    myChart.setOption({        //加载数据图表
+                        tooltip: {},
+                        legend: {
+                            data:['IOS用户使用app个个版本数量']
+                        },
+                        xAxis: {
+                            data: names
+                        },
+                        yAxis: {
+                            type: 'value'
+                        },
+                        series: [{
+                            // 根据名字对应到相应的系列
+                            name: 'IOS用户使用app个个版本数量',//薪资 series not exists. Legend data should be same with series name or data name.
+                            type: 'bar',
+                            data: values
+                        }]
+                    });
+                }
+            },
+            error : function(errorMsg) {
+                //请求失败时执行该函数
+                alert("图表请求数据失败!");
+                myChart.hideLoading();
+            }
+        });//end ajax
+    });
+
+</script>
+</body>
+</html>
