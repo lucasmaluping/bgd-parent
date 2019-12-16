@@ -9,7 +9,6 @@
         <module name="bgd-2102" />
         <module name="bgd-chart" />
         <module name="bgd-common" />
-        <module name="bgd-start" />
         <module name="bgd-dy" />
         <module name="bgd-logger" />
         <module name="bgd-mock" />

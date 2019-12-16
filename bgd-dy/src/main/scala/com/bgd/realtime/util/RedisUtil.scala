@@ -6,6 +6,7 @@ import redis.clients.jedis.{Jedis, JedisPool, JedisPoolConfig}
   * @author dengyu
   * @data 2019/11/27 - 10:02
   */
+
 object RedisUtil {
 
   var jedisPool:JedisPool=null

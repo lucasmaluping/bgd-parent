@@ -1,4 +1,4 @@
-求每个电影平均分
+1.求每个电影平均分
 数据格式
 movieId     tagID     relevance
 1	1	0.025
@@ -34,3 +34,33 @@ select movield,avg(relevance)
 from project.ods_genome_scores
 where dt='2019-12-12'
 group by movield;
+---------------------------------------------------------------------------------
+2.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
