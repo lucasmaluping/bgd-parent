@@ -1,0 +1,60 @@
+<script type="text/javascript">
+
+    function cx(){
+
+//获取条件：根据时间异步查询
+
+        var yearDate = $('#yearDate').val();
+
+//Ajax查询
+
+        $.ajax({
+
+            url:"/${rootPath}/bus/tjfx/ajax_date?yearDate="+ yearDate,
+
+            type:'post',
+
+            dataType:'json',
+
+            success:function(data){
+
+//返回结果为List<map>形式,处理查询结果
+
+                if(data!=null){
+
+                    var seriesData=[];
+
+                    var legendData=[];
+//定义一个object引用类型对象，例：var person={firstname:"Bill", lastname:"Gates", id:5566};
+                    var map = {};
+//循环向数组中放入值
+                    for (var i = 0; i < data.length; i++) {
+
+                        map = {};
+
+                        map.name = data[i].name;
+
+                        map.value = data[i].value;
+
+                        seriesData[i] = map;
+
+                        legendData[i] = map.name;
+
+                    }
+
+                }
+//获取之前js中创建的myChart的option
+                var option = myChart.getOption();
+//分别向series legend中的data赋值
+                option.series[0].data = seriesData;
+                option.legend[0].data = legendData;
+//创建饼状图
+                myChart.setOption(option,true);
+
+            }
+
+        });
+
+    }
+
+</script>

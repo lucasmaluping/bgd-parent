@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<!-- 配置Run As Maven build : Goals 参数 : mybatis-generator:generate -Dmybatis.generator.overwrite=true -->
+<!-- 配置 tableName,使用 Run As Maven build 生成 dao model 层 -->
+<generatorConfiguration>
+
+    <!--数据库驱动包路径 -->
+    <classPathEntry
+            location="C:\Users\DELL\.m2\repository\mysql\mysql-connector-java\8.0.16\mysql-connector-java-8.0.16.jar"/>
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!--关闭注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!--数据库连接信息 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/spark?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=UTC"
+                        userId="root" password="403411">
+        </jdbcConnection>
+        <!--生成的model 包路径 -->
+        <javaModelGenerator targetPackage="com.example.bgdteam2echarts.model"
+                            targetProject="src/main/java">
+            <property name="enableSubPackages" value="ture"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!--生成xml mapper文件 路径 -->
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="src/main/resources">
+            <property name="enableSubPackages" value="ture"/>
+        </sqlMapGenerator>
+        <!-- 生成的Dao接口 的包路径 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.example.bgdteam2echarts.dao" targetProject="src/main/java">
+            <property name="enableSubPackages" value="ture"/>
+        </javaClientGenerator>
+        <!--对应数据库表名，多个表，请复制指定 -->
+        <!--生成对应表及类名-->
+       <table tableName="ios_table" domainObjectName="Ios_table"></table>
+
+<!--        <table tableName="aaaaaa" domainObjectName="AAAAAAA"></table>-->
+
+    </context>
+</generatorConfiguration>

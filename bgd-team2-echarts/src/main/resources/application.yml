@@ -1,0 +1,21 @@
+server:
+  port: 8888
+
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.43.1:3306/spark?characterEncoding=utf-8&serverTimezone=GMT%2B8
+    username: root
+    password: 403411
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  thymeleaf:
+    cache: false
+  redis:
+    host: hdp-1
+    port: 6379
+    password: 403411
+    timeout: 1000
+    database: 1
+
+mybatis:
+  typeAliasesPackage: com.example.bgdteam2echarts.model
+  mapperLocations: classpath:mapper/*.xml
